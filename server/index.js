@@ -40,14 +40,10 @@ io.on("connection", (socket) => {
     global.chatSocket = socket;
     socket.on("add-user", (id) => {
     onlineUsers.set(id, socket.id);
-    // console.log("onlineUsers-"+[...onlineUsers.entries()]);
-    // console.log(`User Connected: ${socket.id}` + "----id-"+ id);
     
 });
 
 socket.on("join_room", (data) => {
-    // console.log("data to-"+data.to + "data.from:"+ data.from);
-        // console.log("onlineUsers-"+[...onlineUsers.entries()]);
         const sendUserSocket = onlineUsers.get(data.to);
         if (sendUserSocket)
             socket.join(data.from);
@@ -71,6 +67,6 @@ socket.on("join_room", (data) => {
     });
     });
 
-    server.listen(process.env.PORT, () => {
-        console.log(`Server Started on PORT ${process.env.PORT}`)
+    server.listen(5000, () => {
+        console.log(`Server Started on PORT 5000`)
     });
